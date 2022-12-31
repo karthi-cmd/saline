@@ -1,10 +1,7 @@
 <?php
 ob_start();
 session_start();
-
-include './firebase/dbcon.php';
 include 'includes/conn.php';
-
 if (!isset($_SESSION['username'])) {
   header('Location: index.php');
   exit();
@@ -17,7 +14,6 @@ if (!isset($_SESSION['username'])) {
   }
 }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -57,7 +53,7 @@ if (!isset($_SESSION['username'])) {
       <div class="main-panel">
         <div class="content-wrapper">
           <div class="page-header">
-            <h3 class="page-title"> My Devices </h3>
+            <h3 class="page-title"> Variables </h3>
           </div>
           <div class="col-md-12 ">
             <div class="row">
@@ -87,7 +83,7 @@ if (!isset($_SESSION['username'])) {
                 <h3 class="panel-title"></h3>
               </div>
               <div class="col-md-2" align="right">
-                <button type="button" name="add" id="updateRecord" class="btn btn-dark update"> + Add Device</button>
+                <button type="button" name="add" id="updateRecord" class="btn btn-dark update"> + Add Variable</button>
               </div>
             </div>
             <br>
@@ -96,35 +92,29 @@ if (!isset($_SESSION['username'])) {
             $sql = mysqli_query($conn, "SELECT * from users WHERE deviceid = '" . $_SESSION['id'] . "'");
             $row = mysqli_fetch_assoc($sql);
             ?>
-            <div id="sortable" class="row">
+            <div id="variables" class="row ">
 
               <?php
-              $ref_table = 'devices'; //table Name
-
-              $devices = $database->getReference($ref_table)->getValue();
-
-              if ($devices > 0) {
-                foreach ($devices as $key => $row) {
-
-              ?>
-                  <div class="col-xl-3 col-lg-6">
-                    <div class="card l-bg-black resizable">
-                      <div class="card-statistic-3 p-4">
-                        <div class="mb-4">
-                          <h5 class="card-title mb-0"><?= $row['name'] ?></h5>
-                        </div>
-                        <div class="row align-items-center mb-2 d-flex">
-                          <div class="col-8">
-                            <h2 class="d-flex align-items-center mb-0"><?= $row['deviceid'] ?></h2>
-                          </div>
+              $arr = array('Variable 1', 'Variable 2', 'Variable 3', 'Variable 4'); #Variables list
+              foreach ($arr as $item) {
+                echo '<div class="col-xl-3 col-lg-6">
+                <div class="card l-bg-black">
+                  <div class="card-statistic-3 p-4">
+                    <div class="mb-4">
+                      <h5 class="card-title mb-0">'
+                  . $item .
+                  '</h5>
+                      </div>
+                      <div class="row align-items-center mb-2 d-flex">
+                        <div class="col-8">
+                          <h2 class="d-flex align-items-center mb-0">'
+                  . $item .
+                  '</h2>
                         </div>
                       </div>
                     </div>
                   </div>
-              <?php
-                }
-              } else {
-                echo '<h1 class="text-primary">No Devices Found.</h1>';
+                </div>';
               }
               ?>
 
@@ -151,39 +141,38 @@ if (!isset($_SESSION['username'])) {
             <div class="container contact col-lg-12 col-md-12 col-sm-12 col-xs-12 col-xl-12">
               <div id="recordModal" class="modal fade">
                 <div class="modal-dialog">
-                  <form method="post" action="add_device.php">
+                  <form method="post" action="add_variable.php">
                     <div class="modal-content">
                       <div class="modal-header">
-                        <h4 class="modal-title"><i class="fa fa-plus"></i> Add Device</h4>
+                        <h4 class="modal-title"><i class="fa fa-plus"></i> Add Variable</h4>
                         <button type="button" class="close" data-dismiss="modal">&times;</button>
                       </div>
                       <div class="modal-body">
                         <div class="form-group">
-                          <label for="deviceid" class="control-label">Device ID</label>
-                          <input type="text" class="form-control" id="deviceid" value="" name="deviceid" placeholder="Device ID" required>
-                        </div>
-                        <div class="form-group">
-                          <label for="name" class="control-label">Device Name</label>
+                          <label for="username" class="control-label">Variable Name</label>
                           <input type="text" class="form-control" id="name" value="" name="name" placeholder="Device Name" required>
                         </div>
                         <div class="form-group">
-                          <label for="desc" class="control-label">Description</label>
+                          <label for="firstname" class="control-label">Description</label>
                           <input type="text" class="form-control" id="desc" value="" name="desc" placeholder="Description">
                         </div>
-                        <div class="modal-footer">
-                          <!-- <input type="hidden" name="deviceid" id="deviceid" value="<?php //echo $row['deviceid']; 
-                                                                                          ?>" /> -->
-                          <input type="hidden" name="action" id="action" value="" />
-                          <input type="submit" name="save" id="save" class="btn btn-info" value="Save" />
-                          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                        <div class="form-group">
+                          <label for="firstname" class="control-label">Variable Unit</label>
+                          <input type="text" class="form-control" id="unit" value="" name="unit" placeholder="Description">
                         </div>
+                      </div>
+                      <div class="modal-footer">
+                        <input type="hidden" name="deviceid" id="deviceid" value="<?php echo $row['deviceid']; ?>" />
+                        <input type="hidden" name="action" id="action" value="" />
+                        <input type="submit" name="save" id="save" class="btn btn-info" value="Save" />
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                       </div>
                     </div>
                   </form>
                 </div>
               </div>
             </div>
-          </d iv>
+          </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <?php require('./includes/Footer.php') ?>

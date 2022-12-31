@@ -1,4 +1,5 @@
-#Saline
+# Saline
+SETUP
 - Extract/Clone to `xampp/htdocs`.
 - Start Server and MySQL.
 - Create database `saline`.

@@ -1,8 +1,8 @@
 $(document).ready(function () {
   $(function () {
-    $("#variables").sortable();
+    $("#sortable").sortable();
   });
   $(function(){
-    $(".card").resizable();
+    $(".resizable").resizable();
   });
 });
