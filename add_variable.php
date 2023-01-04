@@ -15,6 +15,7 @@ if(isset($_POST['save'])){
     'desc' => $desc,
     'unit' => $unit,
     'deviceid' => $deviceid,
+    'value' => '-',
   ];
 
   $ref_table = 'variables';  //table Name

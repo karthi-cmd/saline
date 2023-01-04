@@ -47,6 +47,9 @@
     <!-- End layout styles -->
     <link rel="shortcut icon" href="./assets/images/favicon.png" />
     <style>
+      .black{
+        color: black;
+      }
       .card 
       {
         background-color: #e0e0e0 !important;
@@ -144,7 +147,7 @@ input[type='time']
         <div class="main-panel">
           <div class="content-wrapper">
             <div class="page-header">
-              <span class="page-title" style="font-weight: bold;"> Patient Status </span>
+              <span class="page-title"> Patient Status </span>
             </div>
 <div class="col-md-12 ">
 <div class="row">

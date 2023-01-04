@@ -1,6 +1,8 @@
 <?php
 ob_start();
 session_start();
+
+include './firebase/dbcon.php';
 include 'includes/conn.php';
 if (!isset($_SESSION['username'])) {
   header('Location: index.php');
@@ -92,49 +94,37 @@ if (!isset($_SESSION['username'])) {
             $sql = mysqli_query($conn, "SELECT * from users WHERE deviceid = '" . $_SESSION['id'] . "'");
             $row = mysqli_fetch_assoc($sql);
             ?>
-            <div id="variables" class="row ">
+            <div id="sortable" class="row ">
 
               <?php
-              $arr = array('Variable 1', 'Variable 2', 'Variable 3', 'Variable 4'); #Variables list
-              foreach ($arr as $item) {
-                echo '<div class="col-xl-3 col-lg-6">
-                <div class="card l-bg-black">
-                  <div class="card-statistic-3 p-4">
-                    <div class="mb-4">
-                      <h5 class="card-title mb-0">'
-                  . $item .
-                  '</h5>
-                      </div>
-                      <div class="row align-items-center mb-2 d-flex">
-                        <div class="col-8">
-                          <h2 class="d-flex align-items-center mb-0">'
-                  . $item .
-                  '</h2>
+              $ref_table = 'variables'; //table Name
+
+              $variables = $database->getReference($ref_table)->getValue();
+
+              if ($variables > 0) {
+                foreach ($variables as $key => $row) { 
+              ?>
+                <div class="col-xl-3 col-lg-6 resizable">
+                    <div class="card l-bg-cyan">
+                      <div class="card-statistic-3 p-4">
+                        <div class="mb-4">
+                          <h5 class="card-title mb-0 text-dark"><?= $row['name'] ?></h5>
+                        </div>
+                        <div class="row align-items-center mb-2 d-flex">
+                          <div class="col-8">
+                            <h2 class="d-flex align-items-center mb-0"><?= $row['value'] ?></h2>
+                          </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                </div>';
+              <?php
+                }
+              } else {
+                echo '<h1 class="text-primary">No Variables Found.</h1>';
               }
               ?>
 
-              <div class="col-xl-3 col-lg-6">
-                <div class="card l-bg-cherry">
-                  <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="fas fa-hdd"></i></div>
-                    <div class="mb-4">
-                      <h5 class="card-title mb-0">Device Id</h5>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                      <div class="col-8">
-                        <h2 class="d-flex align-items-center mb-0">
-                          <?php echo $row['deviceid']; ?>
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div class="row">

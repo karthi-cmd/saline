@@ -107,15 +107,15 @@ if (!isset($_SESSION['username'])) {
                 foreach ($devices as $key => $row) {
 
               ?>
-                  <div class="col-xl-3 col-lg-6">
-                    <div class="card l-bg-black resizable">
+                  <div class="col-xl-3 col-lg-6 resizable">
+                    <div class="card l-bg-cyan">
                       <div class="card-statistic-3 p-4">
                         <div class="mb-4">
-                          <h5 class="card-title mb-0"><?= $row['name'] ?></h5>
+                          <h5 class="card-title mb-0"><a class="card-link text-dark" href="variables.php"><?= $row['name'] ?></a></h5>
                         </div>
                         <div class="row align-items-center mb-2 d-flex">
                           <div class="col-8">
-                            <h2 class="d-flex align-items-center mb-0"><?= $row['deviceid'] ?></h2>
+                            <h2 class="d-flex align-items-center mb-0">Id: <?= $row['deviceid'] ?></h2>
                           </div>
                         </div>
                       </div>
@@ -127,24 +127,6 @@ if (!isset($_SESSION['username'])) {
                 echo '<h1 class="text-primary">No Devices Found.</h1>';
               }
               ?>
-
-              <div class="col-xl-3 col-lg-6">
-                <div class="card l-bg-cherry">
-                  <div class="card-statistic-3 p-4">
-                    <div class="card-icon card-icon-large"><i class="fas fa-hdd"></i></div>
-                    <div class="mb-4">
-                      <h5 class="card-title mb-0">Device Id</h5>
-                    </div>
-                    <div class="row align-items-center mb-2 d-flex">
-                      <div class="col-8">
-                        <h2 class="d-flex align-items-center mb-0">
-                          <?php echo $row['deviceid']; ?>
-                        </h2>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
             </div>
           </div>
           <div class="row">
@@ -183,7 +165,7 @@ if (!isset($_SESSION['username'])) {
                 </div>
               </div>
             </div>
-          </d iv>
+          </div>
           <!-- content-wrapper ends -->
           <!-- partial:../../partials/_footer.html -->
           <?php require('./includes/Footer.php') ?>
