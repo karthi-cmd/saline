@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "firebase/auth";
-import React, { useLayoutEffect } from "react";
+// import React, { useLayoutEffect } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { useUserContext } from "../contexts/ContextProvider";
 import { IsAuthenticated } from "../contexts/ContextProvider";
@@ -10,11 +10,7 @@ export function Topbar() {
 
   const navigate = useNavigate();
 
-  useLayoutEffect(() => {
-    if (!IsAuthenticated()) {
-      navigate("/login");
-    }
-  }, []);
+  
 
   return (
     <div>

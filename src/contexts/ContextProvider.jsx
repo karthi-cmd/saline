@@ -5,7 +5,7 @@ import {
   signInWithEmailAndPassword,
   signOut,
 } from "firebase/auth";
-import { useNavigate } from "react-router-dom";
+// import { useNavigate } from "react-router-dom";
 
 export const UserContext = createContext(null);
 
@@ -18,7 +18,7 @@ export const UserContextProvider = ({ children }) => {
   const [isAuth, setIsAuth] = useState(false);
   const [currentUser, setCurrentUser] = useState(null);
 
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
