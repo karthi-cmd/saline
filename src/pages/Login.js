@@ -8,10 +8,41 @@ import {
     Avatar } from '@mui/material';
 import { Container } from '@mui/system';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
+import { ToastContainer, toast } from "react-toastify";
+import {React,useState} from 'react';
+import { useNavigate } from "react-router";
+import {account} from '../service/appwrite-config';
 
-import React from 'react';
+const Login = ({setAuth}) => {
 
-const Login = () => {
+    //const history = useHistory();
+    const [userDetails, setUserDetails] = useState({
+      email: "",
+      password: "",
+    });
+    const navigate = useNavigate();
+    const loginUser = async (e) => {
+        e.preventDefault();
+    
+        try {
+         
+          const promise= account.createEmailSession(userDetails.email, userDetails.password);
+          promise.then(function (response) {
+            setAuth(true);
+            
+          navigate("/devices");
+
+            console.log(response); // Success
+        }, function (error) {
+            console.log(error); // Failure
+        });
+         
+        } catch (error) {
+          toast.error(`${error.message}`)
+    
+        }
+      };
+    
     const avtarStyle={backgroundColor:'blue'}
     return (
         <div>
@@ -34,6 +65,12 @@ const Login = () => {
                         <Grid container direction="column" spacing={2}>
                             <Grid item>
                                 <TextField
+                                onChange={(e) => {
+                                    setUserDetails({
+                                      ...userDetails,
+                                      email: e.target.value,
+                                    });
+                                  }}
                                     type="email"
                                     fullWidth label="enter your email"
                                     placeholder='email address'
@@ -44,6 +81,12 @@ const Login = () => {
                             </Grid>
                             <Grid item>
                                 <TextField
+                                 onChange={(e) => {
+                                    setUserDetails({
+                                      ...userDetails,
+                                      password: e.target.value,
+                                    });
+                                  }}
                                     type="password"
                                     fullWidth 
                                     label=" enter password"
@@ -68,7 +111,8 @@ const Login = () => {
                                 </TextField>
                             </Grid>
                             <Grid item>
-                            <Button variant="contained" fullWidth>Login</Button>
+                            <Button type="submit" onClick={(e) => loginUser(e)}
+                            variant="contained" fullWidth>Login</Button>
                              
                             </Grid>
 
@@ -83,5 +127,8 @@ const Login = () => {
         </div>
     );
 };
+
+
+    
 
 export default Login;

@@ -1,8 +1,7 @@
 import React, { useEffect } from "react";
 import { useNavigate } from "react-router-dom";
 
-function NoMatch() {
-  const navigate = useNavigate();
+function NoMatch() {  const navigate = useNavigate();
   useEffect(() => {
     navigate("/");
   });

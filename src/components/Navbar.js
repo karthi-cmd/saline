@@ -1,13 +1,30 @@
-import { Link, useMatch, useResolvedPath } from "react-router-dom"
+import { Link, useMatch,useNavigate, useResolvedPath } from "react-router-dom"
+import { Button } from "@mui/material"
+import { account } from "../service/appwrite-config";
 
-export default function Navbar() {
+export default function Navbar({auth,loUsr}) {
+   const navigate=useNavigate()
+  const logoutUser=()=>{
+    const promise = account.deleteSession('current');
+    //console.log(props)
+    promise.then(function (response) {
+    loUsr();
+    navigate("/login");
+    console.log(response); // Success
+  }, function (error) {
+      console.log(error); // Failure
+  });
+  };
+  
   return (
     <nav className="nav">
       <Link to="/devices" className="site-title">
         Saline
       </Link>
+      <Link to="/variable">V</Link>
       <ul>
-        <CustomLink to="/login">Login</CustomLink>
+        {console.log(auth)}
+        {auth?<Button onClick={logoutUser} variant="text">LOGOUT</Button>:<CustomLink to="/login">Login</CustomLink>}
         <CustomLink to="/about">About</CustomLink>
       </ul>
     </nav>

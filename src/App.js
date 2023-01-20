@@ -49,25 +49,35 @@
 
 // export default App;
 
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Devices from "./pages/Devices";
+import { BrowserRouter as Router, Routes, Route ,useNavigate} from "react-router-dom";
+import CustomizedDialogs from "./components/dialogue"
+import CustomizedVarDialogs from "./components/vardialogue"
+import AddDevices from "./pages/AddDevices";
+import Variables from "./pages/Variables";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import  ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from './components/Navbar'
+import { useState } from "react";
+
 function App() {
-  return (
+ const [auth,setAuth]=useState(false)//REMINDER: need to be false when deployed
+ function loUsr(){  
+    console.log(auth);
+      setAuth(false);   
+  };
+ return (
     <>
       
       <Router>
-      <Navbar />
+      <Navbar auth={auth} loUsr={loUsr}/>
       <div className="container">
         <Routes>
-          <Route element={<ProtectedRoute />}>
-          <Route path="/devices" element={<Devices/>} exact/>
-          {/* <Route path="/variable" element={<Variable/>} />*/}
+          <Route element={<ProtectedRoute auth={auth}  />}>
+          <Route path="/devices" element={<CustomizedDialogs><AddDevices/></CustomizedDialogs>} exact/>
+          {<Route path="/variable" element={<CustomizedVarDialogs><Variables/></CustomizedVarDialogs>} />}
           </Route>
-          <Route path="/login" element={<Login/>} />
+          <Route path="/login" element={<Login setAuth={setAuth}/>} />
           <Route path="/about" element={<About />} /> 
         </Routes>
         </div>
