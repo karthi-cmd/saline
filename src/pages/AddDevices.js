@@ -7,11 +7,30 @@ import {
   } from '@mui/material';
 import { Container } from '@mui/system';
 
-
-import {React} from 'react';
+import { collectionId,db,dbId } from '../service/appwrite-config';
+import { v4 as uuid } from 'uuid';
+import {React,useState} from 'react';
 
 
 export default function AddDevices() {
+    const [deviceDetails, setDeviceDetails] = useState({
+        deviceId: "",
+        deviceName: "",
+        description:""
+      });
+
+      const add=async (e)=>{
+        e.preventDefault();
+
+        const promise = db.createDocument(dbId,collectionId,uuid(), { 
+            ...deviceDetails,});
+
+promise.then(function (response) {
+    console.log(response); // Success
+}, function (error) {
+    console.log(error); // Failure
+});
+      };
   return (
     <div>
         <Container maxWidth="sm">
@@ -31,6 +50,12 @@ export default function AddDevices() {
                         <Grid item>
                         <FormHelperText><h2>Device ID</h2></FormHelperText>
                             <TextField
+                                onChange={(e) => {
+                                    setDeviceDetails({
+                                      ...deviceDetails,
+                                      deviceId: e.target.value,
+                                    });
+                                  }}
                                 type="number"
                                 fullWidth 
                                 placeholder='Enter device id '
@@ -42,6 +67,12 @@ export default function AddDevices() {
                         <Grid item>
                         <FormHelperText><h2>Device Name</h2></FormHelperText>
                             <TextField
+                                onChange={(e) => {
+                                    setDeviceDetails({
+                                      ...deviceDetails,
+                                      deviceName: e.target.value,
+                                    });
+                                  }}
                                 type="text"
                                 fullWidth 
                                 placeholder='Enter device name'
@@ -53,6 +84,12 @@ export default function AddDevices() {
                         <Grid item>
                          <FormHelperText><h2>Description</h2></FormHelperText>
                         <TextField
+                                onChange={(e) => {
+                                    setDeviceDetails({
+                                      ...deviceDetails,
+                                      description: e.target.value,
+                                    });
+                                  }}
                                 type="email"
                                 fullWidth 
                                 placeholder='Description'
@@ -63,7 +100,7 @@ export default function AddDevices() {
                         </Grid>
                         
                         <Grid item>
-                        <Button variant="contained" type="button" >Save</Button>
+                        <Button variant="contained" type="button"  onClick={(e) => add(e)} >Save</Button>
                          
                         </Grid>
 
