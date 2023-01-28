@@ -15,7 +15,7 @@ import { Container } from '@mui/system';
 import { useForm } from "react-hook-form";
 
 export default function Variables() {
-    const { register, handleSubmit, watch, formState: { errors } } = useForm();
+    const { register, handleSubmit, formState: { errors } } = useForm();
     const onSubmit = (data) => console.log(data);
     console.log(errors);
     const [age, setAge] = React.useState('');
@@ -43,7 +43,7 @@ export default function Variables() {
 
                             <Grid container direction="column" spacing={1}>
                                 <Grid item>
-                                    <FormHelperText><h2>Variable Name</h2></FormHelperText>
+                                    <FormHelperText>Variable Name</FormHelperText>
                                     <FormControl fullWidth
                                     >
                                         <InputLabel>select *</InputLabel>
@@ -73,7 +73,7 @@ export default function Variables() {
                                     </FormControl>
                                 </Grid>
                                 <Grid item>
-                                    <FormHelperText><h2>Variable Unit</h2></FormHelperText>
+                                    <FormHelperText>Variable Unit</FormHelperText>
                                     <TextField
                                         type="text"
                                         fullWidth
@@ -88,7 +88,7 @@ export default function Variables() {
                                     </TextField>
                                 </Grid>
                                 <Grid item>
-                                    <FormHelperText><h2>Description</h2></FormHelperText>
+                                    <FormHelperText>Description</FormHelperText>
                                     <TextField
                                         type="text"
                                         fullWidth

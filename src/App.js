@@ -50,9 +50,8 @@
 // export default App;
 
 import { BrowserRouter as Router, Routes, Route ,useNavigate} from "react-router-dom";
-import CustomizedDialogs from "./components/dialogue"
 import CustomizedVarDialogs from "./components/vardialogue"
-import AddDevices from "./pages/AddDevices";
+import Devices from "./pages/devices";
 import Variables from "./pages/Variables";
 import About from "./pages/About";
 import Login from "./pages/Login";
@@ -61,7 +60,7 @@ import Navbar from './components/Navbar'
 import { useState } from "react";
 
 function App() {
- const [auth,setAuth]=useState(false)//REMINDER: need to be false when deployed
+ const [auth,setAuth]=useState(true)//REMINDER: need to be false when deployed
  function loUsr(){  
     console.log(auth);
       setAuth(false);   
@@ -74,7 +73,7 @@ function App() {
       <div className="container">
         <Routes>
           <Route element={<ProtectedRoute auth={auth}  />}>
-          <Route path="/devices" element={<CustomizedDialogs><AddDevices/></CustomizedDialogs>} exact/>
+          <Route path="/devices" element={<Devices/>} exact/>
           {<Route path="/variable" element={<CustomizedVarDialogs><Variables/></CustomizedVarDialogs>} />}
           </Route>
           <Route path="/login" element={<Login setAuth={setAuth}/>} />
