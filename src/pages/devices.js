@@ -63,13 +63,8 @@ const BootstrapDialog = styled(Dialog)(({ theme }) => ({
   },
 }));
 
-export interface DialogTitleProps {
-  id: string;
-  children?: React.ReactNode;
-  onClose: () => void;
-}
 
-function BootstrapDialogTitle(props: DialogTitleProps) {
+function BootstrapDialogTitle(props) {
   
   const { children, onClose, ...other } = props;
 
