@@ -37,12 +37,17 @@ import { Link } from 'react-router-dom';
 
 
 export default function OutlinedCard({deviceid, devicename}) {
+
   return (
     // <Link to={`/devices/${user.id}`}>
    <Card  sx={{width:300,backgroundImage:'linear-gradient(45deg,#BFF098, #6FD6FF)' ,borderColor:'black',borderRadius:'30px'}} variant="outlined" 
 
   >
-    
+    {/* {console.log(deviceid)} */}
+    {/* <={'/variable/{deviceid}'}>
+      variables
+    </Link> */}
+    <Link to={"/variable/"+deviceid}>variables</Link>
       <>
       
       <CardContent >

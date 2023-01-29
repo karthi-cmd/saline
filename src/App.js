@@ -25,9 +25,10 @@ function App() {
         <Routes>
           <Route element={<ProtectedRoute auth={auth}  />}>
           <Route path="/adddevices" element={<AddDevices/>} />
-          <Route path="/variables" element={<Variable />} />
           <Route path="/devices" element={<Devices />} />
+          <Route path="/variable/:id"  component={<Variable/>}></Route>
           </Route>
+         
           {/* <Route path="/adddevices" element={<PopUpForm/>} exact/> */}
           <Route path="/login" element={<Login setAuth={setAuth}/>} />
           <Route path="/about" element={<About />} /> 
