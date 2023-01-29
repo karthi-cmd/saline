@@ -23,11 +23,11 @@ const card = ({deviceId, deviceName}) => {
 
 export default function OutlinedCard({deviceId, deviceName}) {
   return (
-    <Link to={`/devices/${user.id}`}>
+    // <Link to={`/devices/${user.id}`}>
    <Box sx={{width:300}}
    >
       <Card deviceId={deviceId} deviceName={deviceName}>{card}</Card>
     </Box>
-    </Link>
+    // </Link>
   );
 }

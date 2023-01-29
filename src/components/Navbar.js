@@ -10,9 +10,9 @@ export default function Navbar({auth,loUsr}) {
     promise.then(function (response) {
     loUsr();
     navigate("/login");
-    console.log(response); // Success
+   // console.log(response); // Success
   }, function (error) {
-      console.log(error); // Failure
+  //  console.log(error); // Failure
   });
   };
   
@@ -23,7 +23,7 @@ export default function Navbar({auth,loUsr}) {
       </Link>
       <Link to="/variable">V</Link>
       <ul>
-        {console.log(auth)}
+        {/* {console.log(auth)} */}
         {auth?<Button onClick={logoutUser} variant="text">LOGOUT</Button>:<CustomLink to="/login">Login</CustomLink>}
         <CustomLink to="/about">About</CustomLink>
       </ul>
