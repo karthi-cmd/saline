@@ -21,11 +21,14 @@ export default function Navbar({auth,loUsr}) {
       <Link to="/devices" className="site-title">
         Saline
       </Link>
-      <Link to="/variable">V</Link>
+  
       <ul>
         {/* {console.log(auth)} */}
-        {auth?<Button onClick={logoutUser} variant="text">LOGOUT</Button>:<CustomLink to="/login">Login</CustomLink>}
+        
+        <CustomLink to="/adddevices">AddDevices</CustomLink>
         <CustomLink to="/about">About</CustomLink>
+        {auth?<Button onClick={logoutUser} variant="text">LOGOUT</Button>:<CustomLink to="/login">Login</CustomLink>}
+
       </ul>
     </nav>
   )

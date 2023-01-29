@@ -1,9 +1,9 @@
 
 import { BrowserRouter as Router, Routes, Route ,useNavigate} from "react-router-dom";
 import CustomizedVarDialogs from "./components/vardialogue"
-import Devices from "./pages/devices";
-//import PopUpForm from "./pages/addDevices"
-import Variables from "./pages/Variables";
+import Devices from "./pages/Devices";
+import AddDevices from "./pages/addDevices"
+import Variable from "./pages/Variable";
 import About from "./pages/About";
 import Login from "./pages/Login";
 import  ProtectedRoute from "./components/ProtectedRoute";
@@ -24,9 +24,9 @@ function App() {
       <div className="container">
         <Routes>
           <Route element={<ProtectedRoute auth={auth}  />}>
-          <Route path="/devices" element={<Devices/>} exact/>
-         
-          {<Route path="/variable" element={<CustomizedVarDialogs><Variables/></CustomizedVarDialogs>} />}
+          <Route path="/adddevices" element={<AddDevices/>} />
+          <Route path="/variables" element={<Variable />} />
+          <Route path="/devices" element={<Devices />} />
           </Route>
           {/* <Route path="/adddevices" element={<PopUpForm/>} exact/> */}
           <Route path="/login" element={<Login setAuth={setAuth}/>} />

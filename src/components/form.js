@@ -1,28 +1,26 @@
 import React from 'react';
-import InputLabel from '@mui/material/InputLabel';
-import MenuItem from '@mui/material/MenuItem';
-import FormControl from '@mui/material/FormControl';
-import Select, { SelectChangeEvent } from '@mui/material/Select';
+
 import FormHelperText from '@mui/material/FormHelperText';
 import {
     Button,
+    
     Grid,
     Paper,
     TextField,
+    
 } from '@mui/material';
 import { Container } from '@mui/system';
 import { useForm } from "react-hook-form";
 
-export default function Variables() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
+
+export default function Form() {
+    const { register, handleSubmit,  formState: { errors } } = useForm();
     const onSubmit = (data) => console.log(data);
     console.log(errors);
-    const [age, setAge] = React.useState('');
+    
 
 
-    const handleChange = (event) => {
-        setAge(event.target.value);
-    };
+   
 
     return (
         <div>
@@ -33,53 +31,42 @@ export default function Variables() {
                         spacing={2}
                         direction="column"
                         justifyContent="center"
-                        style={{ minHeight: "50vh" }}
+                        style={{ minHeight: "80vh" }}
 
                     >
 
-                        <Paper elevation={0} sx={{ padding: 5 }}>
+                        <Paper elevation={20} sx={{ padding: 5 }}>
+                        <Grid align='center'>
+                       
+                        <h2>DEVICE</h2>
+                        </Grid>
 
 
-                            <Grid container direction="column" spacing={1}>
+                            <Grid container direction="column" spacing={2}>
                                 <Grid item>
-                                    <FormHelperText>Variable Name</FormHelperText>
-                                    <FormControl fullWidth
-                                    >
-                                        <InputLabel>select *</InputLabel>
+                                <FormHelperText><h2>Device ID</h2></FormHelperText>
+                                <TextField
+                                    type="email"
+                                    fullWidth
+                                    placeholder='Enter device id '
+                                    variant='outlined'
+                                    name="dvar"
+                                    {...register("dvar", { required: "Id is required." })}
+                                    error={Boolean(errors.dvar)}
+                                    helperText={errors.dvar?.message}
+                                >
 
-
-                                        <Select
-
-                                            value={age}
-                                            onChange={handleChange}
-                                            fullWidth
-                                            label="select"
-                                            variant='outlined'
-
-                                        >
-
-
-                                            <MenuItem value="" >
-                                                <em>None</em>
-                                            </MenuItem>
-                                            <MenuItem value={1}>DPM</MenuItem>
-                                            <MenuItem value={2}>Capacity</MenuItem>
-                                            <MenuItem value={3}>Battery level</MenuItem>
-                                            <MenuItem value={4}>Room temperature</MenuItem>
-
-                                        </Select>
-                                        <FormHelperText>Required</FormHelperText>
-                                    </FormControl>
-                                </Grid>
+                                </TextField>
+                            </Grid>
                                 <Grid item>
-                                    <FormHelperText>Variable Unit</FormHelperText>
+                                    <FormHelperText><h2>Device Name</h2></FormHelperText>
                                     <TextField
                                         type="text"
                                         fullWidth
                                         placeholder="Enter unit"
                                         variant='outlined'
                                         name="var"
-                                        {...register("var", { required: "unit is required." })}
+                                        {...register("var", { required: "name is required." })}
                                         error={Boolean(errors.var)}
                                         helperText={errors.var?.message}
                                     >
@@ -87,7 +74,7 @@ export default function Variables() {
                                     </TextField>
                                 </Grid>
                                 <Grid item>
-                                    <FormHelperText>Description</FormHelperText>
+                                    <FormHelperText><h2>Description</h2></FormHelperText>
                                     <TextField
                                         type="text"
                                         fullWidth

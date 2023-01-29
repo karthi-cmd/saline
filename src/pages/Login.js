@@ -8,7 +8,7 @@ import {
     Avatar } from '@mui/material';
 import { Container } from '@mui/system';
 import LockOutlinedIcon from '@mui/icons-material/LockOutlined';
-import { ToastContainer, toast } from "react-toastify";
+import { toast } from "react-toastify";
 import {React,useState} from 'react';
 import { useNavigate } from "react-router";
 import {account} from '../service/appwrite-config';
@@ -38,6 +38,7 @@ const Login = ({setAuth}) => {
         });
          
         } catch (error) {
+
           toast.error(`${error.message}`)
     
         }
