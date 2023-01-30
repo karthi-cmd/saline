@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useRef} from 'react';
 
 import FormHelperText from '@mui/material/FormHelperText';
 import {
@@ -17,6 +17,18 @@ export default function Form() {
     const { register, handleSubmit,  formState: { errors } } = useForm();
     const onSubmit = (data) => console.log(data);
     console.log(errors);
+
+    
+    
+  const deviceForm = useRef(null);
+
+  const handleClickEvent = (e) => {
+    e.preventDefault();
+    const form = deviceForm.current
+    // alert(`${form['firstname'].value} ${form['lastname'].value}`)
+    console.log(`${form['deviceid'].value} ${form['devicename'].value}`)
+    handleSubmit(onSubmit)
+ }
     
 
 
@@ -24,7 +36,7 @@ export default function Form() {
 
     return (
         <div>
-            <form onSubmit={handleSubmit(onSubmit)}>
+            <form ref={deviceForm} onSubmit={handleClickEvent}>
                 <Container maxWidth="sm">
                     <Grid
                         container
@@ -44,14 +56,13 @@ export default function Form() {
 
                             <Grid container direction="column" spacing={2}>
                                 <Grid item>
-                                <FormHelperText><h2>Device ID</h2></FormHelperText>
+                                <FormHelperText>Device ID</FormHelperText>
                                 <TextField
-                                    type="email"
                                     fullWidth
                                     placeholder='Enter device id '
                                     variant='outlined'
-                                    name="dvar"
-                                    {...register("dvar", { required: "Id is required." })}
+                                    name={'deviceid'}
+                                    {...register("deviceid", { required: "Id is required." })}
                                     error={Boolean(errors.dvar)}
                                     helperText={errors.dvar?.message}
                                 >
@@ -59,14 +70,14 @@ export default function Form() {
                                 </TextField>
                             </Grid>
                                 <Grid item>
-                                    <FormHelperText><h2>Device Name</h2></FormHelperText>
+                                    <FormHelperText>Device Name</FormHelperText>
                                     <TextField
                                         type="text"
                                         fullWidth
                                         placeholder="Enter unit"
                                         variant='outlined'
-                                        name="var"
-                                        {...register("var", { required: "name is required." })}
+                                        name={'devicename'}
+                                        {...register("devicename", { required: "name is required." })}
                                         error={Boolean(errors.var)}
                                         helperText={errors.var?.message}
                                     >
@@ -74,16 +85,17 @@ export default function Form() {
                                     </TextField>
                                 </Grid>
                                 <Grid item>
-                                    <FormHelperText><h2>Description</h2></FormHelperText>
+                                    <FormHelperText>Description</FormHelperText>
                                     <TextField
                                         type="text"
                                         fullWidth
                                         placeholder='Description'
                                         variant='outlined'
-                                        name="desc"
-                                        {...register("desc", { required: "desc is required." })}
+                                        name={'devicedesc'}
+                                        {...register("devicedesc", { required: "desc is required." })}
                                         error={Boolean(errors.desc)}
                                         helperText={errors.desc?.message}
+                                        
                                     >
 
                                     </TextField>
@@ -91,7 +103,7 @@ export default function Form() {
 
                                 <Grid item>
                                     <Button variant="contained" color="primary" type="submit" className="btns">
-                                        save
+                                        Save
                                     </Button>
 
                                 </Grid>
