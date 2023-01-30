@@ -8,6 +8,10 @@ import {useQuery} from 'react-query';
 
 
 const Variable=()=> {
+    const params = useParams();
+    const id = params.id;
+    console.log(params.id);
+    
     const [variables, setVariables] = useState([]);
     const fetchVariables = () =>{
         const promise =  db.listDocuments("63c9a7d2d94beb5c9a33", "63cafcabe06d83c31e33");
@@ -24,13 +28,12 @@ const Variable=()=> {
         }
     );
 
-    const params =useParams();
-    console.log(params.id);
+    
     
 
         return (
         <>
-        <h1>{params.id}</h1>
+        <h1>{id}</h1>
         {variables.map((variable)=>{
             return(<>
             {variable.dpi}
