@@ -1,7 +1,7 @@
 
 import { BrowserRouter as Router, Routes, Route ,useNavigate} from "react-router-dom";
 import CustomizedVarDialogs from "./components/vardialogue"
-import Devices from "./pages/devices";
+import Devices from "./pages/Devices";
 import AddDevices from "./pages/addDevices"
 import Variable from "./pages/Variable";
 import About from "./pages/About";
@@ -11,10 +11,11 @@ import Navbar from './components/Navbar'
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Form from "./components/form";
+import TestRealtime from "./pages/TestRealtime";
 
 
 function App() {
- const [auth,setAuth]=useState(true)//REMINDER: need to be false when deployed
+ const [auth,setAuth]=useState(false)//REMINDER: need to be false when deployed
  function loUsr(){  
     //console.log(auth);
       setAuth(false);   
@@ -30,6 +31,7 @@ function App() {
               <Route element={<ProtectedRoute auth={auth}  />}>
               <Route path="/adddevices" element={<Form/>} />
               <Route path="/devices" element={<Devices />} />
+              <Route path="/realtime" element={<TestRealtime />} />
 
               </Route>
               <Route path="/variable/:id"  element={<Variable/>}></Route>

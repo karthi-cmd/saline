@@ -14,7 +14,7 @@ const Variable=()=> {
     
     const [variables, setVariables] = useState([]);
     const fetchVariables = () =>{
-        const promise =  db.listDocuments("63c9a7d2d94beb5c9a33", "63cafcabe06d83c31e33");
+        const promise =  db.listDocuments("63c9a7d2d94beb5c9a33", "63cf98f7929c1a3b17c0");
         promise.then(response => {
             console.log(response.documents);
             setVariables(response.documents);
@@ -36,7 +36,9 @@ const Variable=()=> {
         <h1>{id}</h1>
         {variables.map((variable)=>{
             return(<>
-            {variable.dpi}
+            <li key={variable}>
+            {variable.dpm}
+            </li>
             </>)
         })}
         </>
