@@ -3,14 +3,21 @@ import {client, db, dbId} from '../service/appwrite-config'
 import { useParams} from 'react-router-dom';
 // const getData = ()=>{
 import {useQuery} from 'react-query';
-// }
 
+// }
+import Card from '@mui/material/Card';
+import CardContent from '@mui/material/CardContent';
+import Typography from '@mui/material/Typography';
+import Grid from '@mui/material/Grid';
+import { Stack } from '@mui/system';
 
 
 const Variable=()=> {
     const params = useParams();
     const id = params.id;
+   
     console.log(params.id);
+   
     
     const [variables, setVariables] = useState([]);
     const fetchVariables = () =>{
@@ -33,16 +40,51 @@ const Variable=()=> {
 
         return (
         <>
-        <h1>{id}</h1>
+        <h1 style={{fontSize:40,color:'#000'}}>DEVICE:{id}</h1>
+        <Stack direction={'row'}  sx={{flexWrap:'wrap'}}>
         {variables.map((variable)=>{
+           
             return(<>
-            <li key={variable}>
-            {variable.dpm}
-            </li>
+         
+            
+         <Grid  sx={{p:'2%'}}>
+   <Card key={variable} sx={{width:225,height:'100%',backgroundImage:'linear-gradient(to right,#EC008C,#FC6767)',borderRadius:'10px' }}
+    variant="outlined"  >
+   
+      <>
+      
+     <CardContent>
+        <Grid container>
+          <Grid justifyContent='flex-end'>
+      <Typography variant="h4"color="#FFFFFF" sx={{pb:2}} >
+      {variable.dpm}
+     </Typography>
+     </Grid></Grid>
+
+     <Grid container>
+          <Grid justifyContent='flex-end'>
+      <Typography variant="h5"  color="#FFFFFF" align='left'>
+      {variable.capacity}
+      </Typography>
+      </Grid></Grid>
+    
+   
+    
+      </CardContent>
+      
+      </>
+    
+    </Card> 
+   </Grid>
+   
+     
             </>)
+       
+            
         })}
+         </Stack>
         </>
         )
 }
  
-export default  Variable
+export default  Variable;

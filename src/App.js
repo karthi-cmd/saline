@@ -38,6 +38,7 @@ function App() {
               {/* <Route path="/adddevices" element={<PopUpForm/>} exact/> */}
               <Route path="/login" element={<Login setAuth={setAuth}/>} />
               <Route path="/about" element={<About />} /> 
+              
             </Routes>
             </div>
           </Router>

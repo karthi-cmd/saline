@@ -29,9 +29,8 @@ import React from 'react';
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
 import Typography from '@mui/material/Typography';
-
-
-import { Link } from '@mui/material';
+import Grid from '@mui/material/Grid';
+import { Link, Paper } from '@mui/material';
 
 
 
@@ -42,9 +41,13 @@ export default function OutlinedCard({deviceid, devicename}) {
   return (
     
     // <Link to={`/devices/${user.id}`}>
-   <Card  sx={{width:350, backgroundColor:'#6ae29c',borderRadius:'8px' }} variant="outlined" 
-
-  >
+    <Grid  sx={{p:'2%'}}>
+     
+   <Card  sx={{width:225,height:'100%',backgroundImage:'linear-gradient(to right,#8E2DE2,#4A00E0)',borderRadius:'10px' }}
+    variant="outlined"  
+    
+    
+    >
     {/* {console.log(deviceid)} */}
     {/* <={'/variable/{deviceid}'}>
       variables
@@ -54,20 +57,28 @@ export default function OutlinedCard({deviceid, devicename}) {
       
       <>
       
-      <CardContent >
-      <Typography sx={{ fontSize: 40 }} color="#FFFFFF" gutterBottom>
+     <CardContent>
+        <Grid container>
+          <Grid justifyContent='flex-end'>
+      <Typography variant="h4"color="#FFFFFF" sx={{pb:2}} >
        {deviceid}
-      </Typography>
-      <Typography variant="h3" component="div" color="#FFFFFF">
+     </Typography>
+     </Grid></Grid>
+
+     <Grid container>
+          <Grid justifyContent='flex-end'>
+      <Typography variant="h5"  color="#FFFFFF" align='left'>
        {devicename}
       </Typography>
-    </CardContent>
+      </Grid></Grid>
+   
     
-      </>
-      </Link><br/>
+      </CardContent>
       
+      </>
+    </Link>
     </Card> 
-    // </Link>
-    
-  );
+    </Grid>
+   
+   );
 }

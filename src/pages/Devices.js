@@ -1,8 +1,11 @@
 import React, {useState, useEffect} from 'react'
 import { db } from '../service/appwrite-config';
 import OutlinedCard from '../components/card';
-
-function Devices() {
+import { Stack } from '@mui/system';
+import { spacing } from '@mui/system';
+import Grid from '@mui/material/Grid';
+import { FlexboxProps } from '@mui/system';
+export default  function Devices() {
   const [devices, setDevices] = useState([]);
 
 
@@ -19,9 +22,17 @@ function Devices() {
 
   return (
     <>
-      {devices.map((device)=>(<OutlinedCard key={device.deviceId} deviceid={device.deviceId} devicename={device.deviceName}/>))}
+    
+    
+    <Stack direction="row" sx={{flexWrap:'wrap'}} >
+   
+      {devices.map((device)=>(<OutlinedCard  key={device.deviceId} deviceid={device.deviceId} devicename={device.deviceName}/>))}
+      
+      </Stack>
+     
+      
+     
     </>
   )
 }
 
-export default Devices
