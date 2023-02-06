@@ -34,10 +34,11 @@ function App() {
               <Route element={<ProtectedRoute auth={auth} />}>
                 <Route path="/adddevices" element={<Form />} />
                 <Route path="/devices" element={<Devices />} />
-                <Route path="/realtime" element={<TestRealtime />} />
-                <Route path="/variable/:id" element={<Variable />}></Route>
+                <Route path="/variable/:id" element={<Variable />} />
+                {/* <Route path="/realtime" element={<TestRealtime />} /> */}
               </Route>
               {/* <Route path="/adddevices" element={<PopUpForm/>} exact/> */}
+              <Route path="/" element={<Login setAuth={setAuth} />} />
               <Route path="/login" element={<Login setAuth={setAuth} />} />
               <Route path="/about" element={<About />} />
             </Routes>
