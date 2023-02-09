@@ -28,7 +28,7 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
-import { Link, Paper } from "@mui/material";
+import { Link } from "react-router-dom";
 
 export default function OutlinedCard({ deviceid, devicename, variableId }) {
   return (
@@ -47,7 +47,7 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
         {/* <={'/variable/{deviceid}'}>
       variables
     </Link> */}
-        <Link href={"/variable/" + variableId} underline="none">
+        <Link to={"/variable/" + variableId} style={{ textDecoration: "none" }}>
           <>
             <CardContent>
               <Grid container>

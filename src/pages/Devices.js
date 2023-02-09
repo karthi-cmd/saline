@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { db } from "../service/appwrite-config";
+import { devicesCollectionId, db, dbId } from "../service/appwrite-config";
 import OutlinedCard from "../components/card";
 import { Stack } from "@mui/system";
 import { spacing } from "@mui/system";
@@ -9,10 +9,7 @@ export default function Devices() {
   const [devices, setDevices] = useState([]);
 
   useEffect(() => {
-    const promise = db.listDocuments(
-      "63c9a7d2d94beb5c9a33",
-      "63cafcabe06d83c31e33"
-    );
+    const promise = db.listDocuments(dbId, devicesCollectionId);
     promise.then(
       function (response) {
         console.log(response);

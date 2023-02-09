@@ -1,12 +1,9 @@
 import React, { useState } from "react";
-import { client, db, dbId } from "../service/appwrite-config";
+import { db, dbId, variablesCollectionId } from "../service/appwrite-config";
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
-import Card from "@mui/material/Card";
-import CardContent from "@mui/material/CardContent";
-import Typography from "@mui/material/Typography";
-import Grid from "@mui/material/Grid";
 import { Stack } from "@mui/system";
+import VariableCard from "../components/VariableCard";
 
 const Variable = () => {
   const params = useParams();
@@ -19,11 +16,7 @@ const Variable = () => {
     battery: "-",
   });
   const fetchVariables = () => {
-    const promise = db.getDocument(
-      "63c9a7d2d94beb5c9a33",
-      "63cf98f7929c1a3b17c0",
-      variableId
-    );
+    const promise = db.getDocument(dbId, variablesCollectionId, variableId);
     promise.then((response) => {
       console.log(response);
       setVariables(response);
@@ -51,44 +44,6 @@ const Variable = () => {
         <VariableCard name={"CAPACITY"} value={variables.capacity} />
         <VariableCard name={"BATTERY"} value={variables.battery} />
       </Stack>
-    </>
-  );
-};
-
-export const VariableCard = ({ name, value }) => {
-  return (
-    <>
-      <Grid sx={{ p: "2%" }}>
-        <Card
-          sx={{
-            width: 225,
-            height: "100%",
-            backgroundImage: "linear-gradient(to right,#EC008C,#FC6767)",
-            borderRadius: "10px",
-          }}
-          variant="outlined"
-        >
-          <>
-            <CardContent>
-              <Grid container>
-                <Grid justifyContent="flex-end">
-                  <Typography variant="h4" color="#FFFFFF" sx={{ pb: 2 }}>
-                    {name}
-                  </Typography>
-                </Grid>
-              </Grid>
-
-              <Grid container>
-                <Grid justifyContent="flex-end">
-                  <Typography variant="h5" color="#FFFFFF" align="left">
-                    {value}
-                  </Typography>
-                </Grid>
-              </Grid>
-            </CardContent>
-          </>
-        </Card>
-      </Grid>
     </>
   );
 };

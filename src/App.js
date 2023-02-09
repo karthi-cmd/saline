@@ -4,9 +4,9 @@ import {
   Route,
   useNavigate,
 } from "react-router-dom";
-import CustomizedVarDialogs from "./components/vardialogue";
 import Devices from "./pages/Devices";
-import AddDevices from "./pages/addDevices";
+// import AddDevices from "./pages/addDevices";
+import NoMatch from "./pages/NoMatch";
 import Variable from "./pages/Variable";
 import About from "./pages/About";
 import Login from "./pages/Login";
@@ -15,7 +15,7 @@ import Navbar from "./components/Navbar";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Form from "./components/form";
-import TestRealtime from "./pages/TestRealtime";
+// import TestRealtime from "./pages/TestRealtime";
 
 function App() {
   const [auth, setAuth] = useState(false); //REMINDER: need to be false when deployed
@@ -32,6 +32,7 @@ function App() {
           <div className="container">
             <Routes>
               <Route element={<ProtectedRoute auth={auth} />}>
+                <Route index element={<Devices />} />
                 <Route path="/adddevices" element={<Form />} />
                 <Route path="/devices" element={<Devices />} />
                 <Route path="/variable/:id" element={<Variable />} />
@@ -41,6 +42,7 @@ function App() {
               <Route path="/" element={<Login setAuth={setAuth} />} />
               <Route path="/login" element={<Login setAuth={setAuth} />} />
               <Route path="/about" element={<About />} />
+              <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
         </Router>
