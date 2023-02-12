@@ -29,34 +29,45 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
+import Draggable from "react-draggable";
+import { Avatar } from "@mui/material";
+import { blue} from '@mui/material/colors';
+import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
 
 export default function OutlinedCard({ deviceid, devicename, variableId }) {
   return (
     // <Link to={`/devices/${user.id}`}>
-    <Grid sx={{ p: "2%" }}>
-      <Card
-        sx={{
-          width: 225,
-          height: "100%",
-          backgroundImage: "linear-gradient(to right,#8E2DE2,#4A00E0)",
-          borderRadius: "10px",
-        }}
-        variant="outlined"
-      >
-        {/* {console.log(deviceid)} */}
-        {/* <={'/variable/{deviceid}'}>
+    <Draggable>
+      <Grid sx={{ p: "2%" }}>
+        <Card
+          sx={{
+            width: 225,
+            height: "100%",
+            backgroundImage: "linear-gradient(to right,#8E2DE2,#4A00E0)",
+            borderRadius: "10px",
+          }}
+          variant="outlined"
+        >
+           <Avatar sx={{ bgcolor:blue[800] , width: 50, height: 50,position:'absolute',right:'34px'}} variant="square" > <MonitorHeartIcon sx={{ fontSize: 40 }}/></Avatar>
+          {/* {console.log(deviceid)} */}
+          {/* <={'/variable/{deviceid}'}>
       variables
     </Link> */}
-        <Link to={"/variable/" + variableId} style={{ textDecoration: "none" }}>
+
           <>
             <CardContent>
+            <Link to={"/variable/" + variableId} style={{ textDecoration: "none" }}>
               <Grid container>
-                <Grid justifyContent="flex-end">
-                  <Typography variant="h4" color="#FFFFFF" sx={{ pb: 2 }}>
-                    {deviceid}
-                  </Typography>
-                </Grid>
+              
+                  <Grid justifyContent="flex-end">
+                 
+                    <Typography variant="h4" color="#FFFFFF" sx={{ pb: 2 }}>
+                      {deviceid}
+                    </Typography>
+                  </Grid>
+            
               </Grid>
+                    </Link>
 
               <Grid container>
                 <Grid justifyContent="flex-end">
@@ -67,8 +78,9 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
               </Grid>
             </CardContent>
           </>
-        </Link>
-      </Card>
-    </Grid>
+
+        </Card>
+      </Grid>
+    </Draggable>
   );
 }

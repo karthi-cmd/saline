@@ -2,6 +2,10 @@ import Card from "@mui/material/Card";
 import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
+import VaccinesOutlinedIcon from '@mui/icons-material/VaccinesOutlined';
+import { Avatar } from "@mui/material";
+import { blue} from '@mui/material/colors';
+
 
 const VariableCard = ({ name, value }) => {
   return (
@@ -15,7 +19,9 @@ const VariableCard = ({ name, value }) => {
             borderRadius: "10px",
           }}
           variant="outlined"
+          
         >
+
           <>
             <CardContent>
               <Grid container>

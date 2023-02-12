@@ -22,15 +22,17 @@ export default function AddDevices() {
     promise.then(
       function (response) {
         console.log(response); // Success
-        alert("Data inserted");
+        
       },
       function (error) {
         console.log(error); // Failure
       }
     );
   };
+
   return (
     <div>
+     
       <Container maxWidth="sm">
         <Grid
           container
@@ -56,6 +58,10 @@ export default function AddDevices() {
                   fullWidth
                   placeholder="Enter device id "
                   variant="outlined"
+                  name="did"
+                  {...register("did", { required: "Device ID is required." })}
+                                        error={Boolean(errors.did)}
+                                        helperText={errors.did?.message}
                 ></TextField>
               </Grid>
               <Grid item>
@@ -73,6 +79,7 @@ export default function AddDevices() {
                   fullWidth
                   placeholder="Enter device name"
                   variant="outlined"
+                  
                 ></TextField>
               </Grid>
               <Grid item>
@@ -90,22 +97,25 @@ export default function AddDevices() {
                   fullWidth
                   placeholder="Description"
                   variant="outlined"
+                  name="ddesc"
+                  
                 ></TextField>
               </Grid>
 
               <Grid item>
                 <Button
                   variant="contained"
-                  type="button"
+                  type="submit"
                   onClick={(e) => add(e)}
                 >
-                  Save
+                  save
                 </Button>
               </Grid>
             </Grid>
           </Paper>
         </Grid>
       </Container>
+     
     </div>
   );
 }

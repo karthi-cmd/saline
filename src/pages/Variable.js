@@ -4,8 +4,9 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Stack } from "@mui/system";
 import VariableCard from "../components/VariableCard";
+import ResponsiveDrawer from "./Sidebar";
 
-const Variable = () => {
+const Variable = (deviceId) => {
   const params = useParams();
   const variableId = params.id;
   console.log(variableId);
@@ -14,6 +15,7 @@ const Variable = () => {
     dpm: "-",
     capacity: "-",
     battery: "-",
+    deviceId:"-",
   });
   const fetchVariables = () => {
     const promise = db.getDocument(dbId, variablesCollectionId, variableId);
@@ -32,11 +34,12 @@ const Variable = () => {
   );
 
   return (
+    
     <>
-      <h1 style={{ fontSize: 40, color: "#000" }}>DEVICE:{variableId}</h1>
+      <h1 style={{ fontSize: 40, color: "#000" }}>DEVICE:{variables.deviceId}</h1>
       <Stack direction={"row"} sx={{ flexWrap: "wrap" }}>
         {/* variables.map((variable) => {
-          return (
+          return
             <VariableCard />
           );
         }) */}
@@ -44,7 +47,9 @@ const Variable = () => {
         <VariableCard name={"CAPACITY"} value={variables.capacity} />
         <VariableCard name={"BATTERY"} value={variables.battery} />
       </Stack>
+      
     </>
+    
   );
 };
 

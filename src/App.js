@@ -12,9 +12,12 @@ import About from "./pages/About";
 import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
+
+import MenuAppBar from "./pages/Sidebar";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Form from "./components/form";
+import Variables from "./pages/AddVariables";
 // import TestRealtime from "./pages/TestRealtime";
 
 function App() {
@@ -28,6 +31,7 @@ function App() {
     <>
       <QueryClientProvider client={queryclient}>
         <Router>
+          
           <Navbar auth={auth} loUsr={loUsr} />
           <div className="container">
             <Routes>
@@ -42,6 +46,10 @@ function App() {
               <Route path="/" element={<Login setAuth={setAuth} />} />
               <Route path="/login" element={<Login setAuth={setAuth} />} />
               <Route path="/about" element={<About />} />
+              <Route path="/addvariables" element={<Variables />} />
+              <Route path="/add" element={<MenuAppBar />} />
+              
+
               <Route path="*" element={<NoMatch />} />
             </Routes>
           </div>
