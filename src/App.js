@@ -3,6 +3,7 @@ import {
   Routes,
   Route,
   useNavigate,
+
 } from "react-router-dom";
 import Devices from "./pages/Devices";
 // import AddDevices from "./pages/addDevices";
@@ -46,6 +47,7 @@ function App() {
               <Route path="/login" element={<Login setAuth={setAuth} />} />
               <Route path="/about" element={<About />} />
               <Route path="/addvariables" element={<Variables />} />
+              <Route path="/add" element={<MenuAppBar />} />
               
 
               <Route path="*" element={<NoMatch />} />
