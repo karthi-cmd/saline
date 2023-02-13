@@ -4,7 +4,6 @@ import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Stack } from "@mui/system";
 import VariableCard from "../components/VariableCard";
-import ResponsiveDrawer from "./Sidebar";
 
 const Variable = (deviceId) => {
   const params = useParams();
@@ -43,9 +42,9 @@ const Variable = (deviceId) => {
             <VariableCard />
           );
         }) */}
-        <VariableCard name={"DPM"} value={variables.dpm} />
-        <VariableCard name={"CAPACITY"} value={variables.capacity} />
-        <VariableCard name={"BATTERY"} value={variables.battery} />
+        <VariableCard name={"Dpm"} value={variables.dpm} />
+        <VariableCard name={"Capacity"} value={variables.capacity} />
+        <VariableCard name={"Battery"} value={variables.battery} />
       </Stack>
       
     </>

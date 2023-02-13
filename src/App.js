@@ -13,7 +13,6 @@ import Login from "./pages/Login";
 import ProtectedRoute from "./components/ProtectedRoute";
 import Navbar from "./components/Navbar";
 
-import MenuAppBar from "./pages/Sidebar";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "react-query";
 import Form from "./components/form";
@@ -47,7 +46,6 @@ function App() {
               <Route path="/login" element={<Login setAuth={setAuth} />} />
               <Route path="/about" element={<About />} />
               <Route path="/addvariables" element={<Variables />} />
-              <Route path="/add" element={<MenuAppBar />} />
               
 
               <Route path="*" element={<NoMatch />} />

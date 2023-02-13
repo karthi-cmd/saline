@@ -29,15 +29,14 @@ import CardContent from "@mui/material/CardContent";
 import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
-import Draggable from "react-draggable";
 import { Avatar } from "@mui/material";
 import { blue} from '@mui/material/colors';
-import MonitorHeartIcon from '@mui/icons-material/MonitorHeart';
-
+import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
 export default function OutlinedCard({ deviceid, devicename, variableId }) {
+  const icon={backgroundColor:'#4A00E0' }
   return (
     // <Link to={`/devices/${user.id}`}>
-    <Draggable>
+   
       <Grid sx={{ p: "2%" }}>
         <Card
           sx={{
@@ -48,7 +47,6 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
           }}
           variant="outlined"
         >
-           <Avatar sx={{ bgcolor:blue[800] , width: 50, height: 50,position:'absolute',right:'34px'}} variant="square" > <MonitorHeartIcon sx={{ fontSize: 40 }}/></Avatar>
           {/* {console.log(deviceid)} */}
           {/* <={'/variable/{deviceid}'}>
       variables
@@ -57,30 +55,27 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
           <>
             <CardContent>
             <Link to={"/variable/" + variableId} style={{ textDecoration: "none" }}>
-              <Grid container>
               
-                  <Grid justifyContent="flex-end">
-                 
-                    <Typography variant="h4" color="#FFFFFF" sx={{ pb: 2 }}>
+                    <Grid container justifyContent="flex-start">
+                    <Typography variant="h4" color="#FFFFFF" sx={{ pd: 2}} >
                       {deviceid}
                     </Typography>
-                  </Grid>
-            
-              </Grid>
+    <Avatar style={icon}sx={{width: 50, height: 50,left:'100px' }}  variant="square" > <MedicalServicesOutlinedIcon sx={{ fontSize: 40,right:'10' }}/></Avatar>
+    
+                    </Grid>
                     </Link>
 
-              <Grid container>
-                <Grid justifyContent="flex-end">
+              <Grid container justifyContent="flex-start">
+                
                   <Typography variant="h5" color="#FFFFFF" align="left">
                     {devicename}
                   </Typography>
-                </Grid>
+                
               </Grid>
             </CardContent>
           </>
 
         </Card>
       </Grid>
-    </Draggable>
   );
 }

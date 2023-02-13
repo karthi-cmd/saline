@@ -69,8 +69,9 @@ const Login = ({ setAuth }) => {
                 <h2>login</h2>
               </Grid>
 
-              <Grid container direction="column" spacing={2}>
+              <Grid container direction="column" >
 
+                  <form>
                 <Grid item>
                   <TextField
                     onChange={(e) => {
@@ -89,6 +90,7 @@ const Login = ({ setAuth }) => {
 
                   </TextField>
                 </Grid>
+                <br/>
                 <Grid item>
                   <TextField
                       
@@ -123,6 +125,7 @@ const Login = ({ setAuth }) => {
 
                   </TextField>
                 </Grid>
+                <br/>
                 <Grid item>
                   <Button type="submit" onClick={(e) => loginUser(e) }
                   
@@ -130,7 +133,7 @@ const Login = ({ setAuth }) => {
 
                 </Grid>
 
-
+                </form>
               </Grid>
 
             </Paper>
