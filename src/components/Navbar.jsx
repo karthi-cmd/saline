@@ -52,6 +52,7 @@ export default function Navbar({auth,loUsr},props) {
 
   const drawer = (
     <Box onClick={handleDrawerToggle} sx={{ textAlign: 'center' }} backgroundColor="#5A4FCF">
+
       <Typography variant="h6" sx={{ my: 2 }}>
         SALINE
       </Typography>
@@ -136,7 +137,8 @@ export default function Navbar({auth,loUsr},props) {
             <MenuIcon />
             
           </IconButton>
-          <h3 style={{float:'right',marginLeft:'40px'}}>SALINE</h3>
+          <Link to="/devices">
+          <h3 style={{float:'right',marginLeft:'40px',color:'white'}} >SALINE</h3></Link>
           <Typography
             variant="h6"
             component="div"

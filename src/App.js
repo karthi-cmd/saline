@@ -47,7 +47,7 @@ function App() {
               <Route path="/login" element={<Login setAuth={setAuth} />} />
               <Route path="/about" element={<About />} />
               <Route path="/addvariables" element={<Variables />} />
-              <Route path="/add" element={<MenuAppBar />} />
+              
               
 
               <Route path="*" element={<NoMatch />} />
