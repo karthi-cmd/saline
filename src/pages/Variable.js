@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { db, dbId, variablesCollectionId } from "../service/appwrite-config";
+import { devicesCollectionId } from "../service/appwrite-config";
+
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
 import { Stack } from "@mui/system";

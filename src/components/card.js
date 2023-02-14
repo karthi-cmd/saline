@@ -30,8 +30,8 @@ import Typography from "@mui/material/Typography";
 import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
-import { blue} from '@mui/material/colors';
 import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
+import { Shadows } from "@mui/material";
 export default function OutlinedCard({ deviceid, devicename, variableId }) {
   const icon={backgroundColor:'#4A00E0' }
   return (
@@ -44,6 +44,8 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
             height: "100%",
             backgroundImage: "linear-gradient(to right,#8E2DE2,#4A00E0)",
             borderRadius: "10px",
+            boxShadow:10
+
           }}
           variant="outlined"
         >

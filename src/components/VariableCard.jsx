@@ -14,8 +14,9 @@ const VariableCard = ({ name, value }) => {
           sx={{
             width: 225,
             height: "100%",
-            backgroundImage: "linear-gradient(to right,#EC008C,#FC6767)",
+            backgroundImage: "linear-gradient(to right,#000428,#004E92)",
             borderRadius: "10px",
+            
           }}
           variant="outlined"
           
@@ -24,8 +25,8 @@ const VariableCard = ({ name, value }) => {
           <>
             <CardContent>
               
-                <Grid container justifyContent="flex-start">
-                  <Typography variant="h4" color="#FFFFFF" sx={{ pb: 2 }}>
+                <Grid container justifyContent="flex-start" >
+                  <Typography variant="h4" color="#FFFFFF" sx={{ pd: 2 }}>
                     {name}
                   </Typography>
 
@@ -33,7 +34,7 @@ const VariableCard = ({ name, value }) => {
              
 
               <Grid container justifyContent="flex-start">
-                  <Typography variant="h5" color="#FFFFFF" align="left">
+                  <Typography variant="h3" color="#FFFFFF" align="left">
                     {value}
                   </Typography>
                 
