@@ -1,7 +1,7 @@
 import { Link, useMatch,useNavigate, useResolvedPath } from "react-router-dom";
 
 import { account } from "../service/appwrite-config";
-import * as React from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import AppBar from '@mui/material/AppBar';
 import Box from '@mui/material/Box';
@@ -15,21 +15,57 @@ import ListItemText from '@mui/material/ListItemText';
 import MenuIcon from '@mui/icons-material/Menu';
 import Toolbar from '@mui/material/Toolbar';
 import AddBoxOutlinedIcon from '@mui/icons-material/AddBoxOutlined';
-import WorkIcon from '@mui/icons-material/Work';
+
 import BeachAccessIcon from '@mui/icons-material/BeachAccess';
 import ListItemAvatar from '@mui/material/ListItemAvatar';
 import Avatar from '@mui/material/Avatar';
 import Typography from '@mui/material/Typography';
 import Button from '@mui/material/Button';
 import LogoutIcon from '@mui/icons-material/Logout';
-import ListItemButton from '@mui/material/ListItemButton';
 import { Paper } from "@mui/material";
 import InfoOutlinedIcon from '@mui/icons-material/InfoOutlined';
+import MenuItem from '@mui/material/MenuItem';
+import { styled } from '@mui/material/styles';
+import Badge from '@mui/material/Badge';
+
+
 
 const drawerWidth = 240;
-const button={backgroundColor:"#AFDBF5"}
+
+
+
+const StyledBadge = styled(Badge)(({ theme }) => ({
+  '& .MuiBadge-badge': {
+    backgroundColor: '#44b700',
+    color: '#44b700',
+    boxShadow: `0 0 0 2px ${theme.palette.background.paper}`,
+    '&::after': {
+      position: 'absolute',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      borderRadius: '50%',
+      animation: 'ripple 1.2s infinite ease-in-out',
+      border: '1px solid currentColor',
+      content: '""',
+    },
+  },
+  '@keyframes ripple': {
+    '0%': {
+      transform: 'scale(.8)',
+      opacity: 1,
+    },
+    '100%': {
+      transform: 'scale(2.4)',
+      opacity: 0,
+    },
+  },
+}));
 
 export default function Navbar({auth,loUsr},props) {
+ 
+
    const navigate=useNavigate()
   const logoutUser=()=>{
     const promise = account.deleteSession('current');
@@ -56,39 +92,58 @@ export default function Navbar({auth,loUsr},props) {
       <Typography variant="h6" sx={{ my: 2 }}>
         SALINE
       </Typography>
-      
-      <List sx={{ width: '100%', maxWidth: 360, bgcolor: 'background.paper' }}>
+
+      <List sx={{ width: '100%', maxWidth: 360, bgcolor: '#D4EFFF'}} >
+      <Divider variant="middle" component="li" />
         
-        <CustomLink to="/adddevices"  style={{ textDecoration: "none" }}>
-        <Divider variant="inset" component="li" />
-        <ListItemButton>
-      <ListItem  style={button}>
+        
+       {auth && <ListItem >
         <ListItemAvatar>
-          <Avatar>
+       <StyledBadge
+        overlap="circular"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        variant="dot"
+      >
+        <Avatar alt="Remy Sharp"  />
+      </StyledBadge>
+      </ListItemAvatar>
+      <ListItemText primary="MY PROFILE" />
+        
+      </ListItem>}
+      
+      <Divider variant="middle" component="li" />
+      
+        <CustomLink to="/adddevices"  style={{ textDecoration: "none" }}>
+      <ListItem  >
+        <ListItemAvatar>
+          <Avatar alt="Remy Sharp">
             <AddBoxOutlinedIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Add Devices"  />
-      </ListItem>
-      </ListItemButton>
-        </CustomLink>
+       
+        <ListItemText primary="ADD DEVICE" />
+       
 
+      </ListItem>
+      
+        </CustomLink>
+        <Divider variant="inset" component="li" />
         <CustomLink to="/about"  style={{ textDecoration: "none" }}>
-        <ListItemButton>
-      <ListItem  style={button}>
+        
+      <ListItem  >
         <ListItemAvatar>
-          <Avatar>
+          <Avatar alt="Remy Sharp">
             <InfoOutlinedIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="About" />
+        <ListItemText primary="ABOUT" />
       </ListItem>
-      </ListItemButton>
+     
       </CustomLink>
       <Divider variant="inset" component="li" />
-      <ListItemButton>
-      {auth?<Paper onClick={logoutUser}  style={{ textDecoration: "none" }} variant="contained" >
-      <ListItem style={button}>
+     
+      {auth?<Paper onClick={logoutUser}  style={{ textDecoration: "none" }} variant="Text" >
+      <ListItem>
         <ListItemAvatar>
           <Avatar>
           <LogoutIcon/>     
@@ -98,25 +153,25 @@ export default function Navbar({auth,loUsr},props) {
       </ListItem >
       
         </Paper>: <CustomLink to="/login"  style={{ textDecoration: "none" }}>
-        <Divider variant="inset" component="li" />
+       
       <ListItem > 
         <ListItemAvatar>
           <Avatar>
             <BeachAccessIcon />
           </Avatar>
         </ListItemAvatar>
-        <ListItemText primary="Login"  />
+        <ListItemText primary="LOGIN"  />
       </ListItem>
       
       </CustomLink>
       }
-      </ListItemButton>
+      
     </List>
     </Box>
   );
 
   const container = window !== undefined ? () => window().document.body : undefined;
-  const avtarStyle = { backgroundColor: '#6CB4EE' }
+
 
   return (
     <div>
@@ -148,12 +203,22 @@ export default function Navbar({auth,loUsr},props) {
           </Typography>
           <Box sx={{ display: { xs: 'none', sm: 'block' } }} className="list">
            <ul >
+           {auth && <MenuItem >
+        <StyledBadge
+        overlap="circular"
+        anchorOrigin={{ vertical: 'bottom', horizontal: 'right' }}
+        variant="dot"
+      >
+        <Avatar alt="Remy Sharp"  />
+      </StyledBadge>
+       
+        <p>MY PROFILE</p>
+      </MenuItem>}
            <CustomLink to="/adddevices"  style={{ textDecoration: "none" }}>ADD DEVICE</CustomLink>
             <CustomLink to="/about"  style={{ textDecoration: "none" }}>ABOUT</CustomLink>
-        {auth?<Button onClick={logoutUser}  style={{ textDecoration: "none" }} variant="contained" >
+        {auth?<Button onClick={logoutUser}  style={{ textDecoration: "none" }} variant="Text" >
                 <LogoutIcon />LOGOUT
               </Button>:<CustomLink to="/login"  style={{ textDecoration: "none" }}>LOGIN</CustomLink>}
-
            </ul>
 
               
@@ -161,9 +226,9 @@ export default function Navbar({auth,loUsr},props) {
           </Box>
         </Toolbar>
       </AppBar>
-      <Box component="nav">
+      <Box component="nav"  >
         <Drawer
-        backgroundColor="#5A4FCF"
+        backgroundColor="#A3C4D7"
           container={container}
           variant="temporary"
           open={mobileOpen}
@@ -179,7 +244,7 @@ export default function Navbar({auth,loUsr},props) {
           {drawer}
         </Drawer>
       </Box>
-      <Box component="main" sx={{ p: 3 }}/>
+      <Box  sx={{ p: 3 }}/>
        
        
     </Box>

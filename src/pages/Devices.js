@@ -6,7 +6,8 @@ import { Stack } from "@mui/system";
 
 export default function Devices() {
   const [devices, setDevices] = useState([]);
-
+  
+  
   useEffect(() => {
     const promise = db.listDocuments(dbId, devicesCollectionId);
     promise.then(
@@ -20,20 +21,23 @@ export default function Devices() {
     );
   }, []);
 
+  
+  
+
   return (
     <>
       
-       
+      
       
       <Stack direction="row" sx={{ flexWrap: "wrap" }}>
         {devices.map((device) => (
           <OutlinedCard
-            key={device.deviceId}
+          key={device.deviceId}
             deviceid={device.deviceId}
             devicename={device.deviceName}
             variableId={device.variableId}
-          />
-        ))}
+            />
+            ))}
       </Stack>
     </>
   );

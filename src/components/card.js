@@ -31,14 +31,16 @@ import Grid from "@mui/material/Grid";
 import { Link } from "react-router-dom";
 import { Avatar } from "@mui/material";
 import MedicalServicesOutlinedIcon from '@mui/icons-material/MedicalServicesOutlined';
-import { Shadows } from "@mui/material";
+
+
 export default function OutlinedCard({ deviceid, devicename, variableId }) {
   const icon={backgroundColor:'#4A00E0' }
   return (
     // <Link to={`/devices/${user.id}`}>
    
+      
       <Grid sx={{ p: "2%" }}>
-        <Card
+       <Card
           sx={{
             width: 225,
             height: "100%",
@@ -48,7 +50,7 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
 
           }}
           variant="outlined"
-        >
+        > 
           {/* {console.log(deviceid)} */}
           {/* <={'/variable/{deviceid}'}>
       variables
@@ -75,9 +77,12 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
                 
               </Grid>
             </CardContent>
+        
           </>
 
         </Card>
+
       </Grid>
+ 
   );
 }
