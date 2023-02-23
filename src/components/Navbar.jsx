@@ -33,7 +33,6 @@ import Badge from '@mui/material/Badge';
 const drawerWidth = 240;
 
 
-
 const StyledBadge = styled(Badge)(({ theme }) => ({
   '& .MuiBadge-badge': {
     backgroundColor: '#44b700',
@@ -64,9 +63,10 @@ const StyledBadge = styled(Badge)(({ theme }) => ({
 }));
 
 export default function Navbar({auth,loUsr},props) {
+  
  
+  const navigate=useNavigate()
 
-   const navigate=useNavigate()
   const logoutUser=()=>{
     const promise = account.deleteSession('current');
     //console.log(props)
@@ -211,8 +211,8 @@ export default function Navbar({auth,loUsr},props) {
       >
         <Avatar alt="Remy Sharp"  />
       </StyledBadge>
-       
-        <p>MY PROFILE</p>
+        
+        <p>{auth }</p>
       </MenuItem>}
            <CustomLink to="/adddevices"  style={{ textDecoration: "none" }}>ADD DEVICE</CustomLink>
             <CustomLink to="/about"  style={{ textDecoration: "none" }}>ABOUT</CustomLink>

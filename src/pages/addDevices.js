@@ -4,8 +4,20 @@ import { Container } from "@mui/system";
 import { devicesCollectionId, db, dbId } from "../service/appwrite-config";
 import { v4 as uuid } from "uuid";
 import { React, useState } from "react";
+import { useForm } from "react-hook-form";
+import FormControl from '@mui/material/FormControl';
+
 
 export default function AddDevices() {
+  const { register, handleSubmit, formState: { errors } } = useForm();
+  const onSubmit = (data) => console.log(data);
+  console.log(errors);
+  const [age, setAge] = React.useState('');
+
+
+  const handleChange = (event) => {
+      setAge(event.target.value);
+  };
   const [deviceDetails, setDeviceDetails] = useState({
     deviceId: "",
     deviceName: "",
@@ -32,7 +44,8 @@ export default function AddDevices() {
 
   return (
     <div>
-     
+  <form onSubmit={handleSubmit(onSubmit)}>
+
       <Container maxWidth="sm">
         <Grid
           container
@@ -84,7 +97,7 @@ export default function AddDevices() {
               </Grid>
               <Grid item>
                 <FormHelperText>
-                  <h2>Description</h2>
+                  <h1>Description</h1>
                 </FormHelperText>
                 <TextField
                   onChange={(e) => {
@@ -93,17 +106,21 @@ export default function AddDevices() {
                       description: e.target.value,
                     });
                   }}
-                  type="email"
+                  type="text"
                   fullWidth
                   placeholder="Description"
                   variant="outlined"
                   name="ddesc"
-                  
+                 
+                      {...register("ddesc", { required: "desc is required." })}
+                      error={Boolean(errors.ddesc)}
+                     helperText={errors.ddesc?.message}
                 ></TextField>
               </Grid>
 
               <Grid item>
                 <Button
+                className="btns"
                   variant="contained"
                   type="submit"
                   onClick={(e) => add(e)}
@@ -115,7 +132,7 @@ export default function AddDevices() {
           </Paper>
         </Grid>
       </Container>
-     
+     </form>
     </div>
   );
 }

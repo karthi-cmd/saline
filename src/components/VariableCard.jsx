@@ -14,7 +14,7 @@ const VariableCard = ({ name, value }) => {
           sx={{
             width: 225,
             height: "100%",
-            backgroundImage: "linear-gradient(to right,#000428,#004E92)",
+            backgroundImage: "linear-gradient(to left,#4A00E0,#004E92)",
             borderRadius: "10px",
             
           }}

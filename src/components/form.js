@@ -3,14 +3,12 @@ import { Container } from "@mui/system";
 
 import { devicesCollectionId, db, dbId } from "../service/appwrite-config";
 import { v4 as uuid } from "uuid";
-import { React, useState, useRef } from "react";
-import { useForm } from "react-hook-form";
+import { React, useRef } from "react";
 
 
 export default function Form() {
-    const { register, handleSubmit, formState: { errors } } = useForm();
-    const onSubmit = (data) => console.log(data);
-    console.log(errors);
+   
+    
 
 
 
@@ -19,7 +17,7 @@ export default function Form() {
     const handleClickEvent = (e) => {
 
         e.preventDefault();
-        handleSubmit(onSubmit);
+        
 
         const form = deviceForm.current
         const promise = db.createDocument(dbId, devicesCollectionId, uuid(), {
@@ -37,7 +35,7 @@ export default function Form() {
                 console.log(error); // Failure
             }
         );
-        handleSubmit(onSubmit)
+        
 
     }
 
@@ -47,18 +45,18 @@ export default function Form() {
 
     return (
         <div>
-            <form ref={deviceForm} onSubmit={handleClickEvent}>
+            <form ref={deviceForm} onSubmit={handleClickEvent} >
                 <Container maxWidth="sm">
                     <Grid
                         container
                         spacing={2}
                         direction="column"
                         justifyContent="center"
-                        style={{ minHeight: "80vh" }}
+                        style={{ minHeight: "60vh" }}
 
                     >
 
-                        <Paper elevation={20} sx={{ padding: 5 }}>
+                        <Paper elevation={20} sx={{ padding: 3 }}>
                             <Grid align='center'>
 
                                 <h2>DEVICE</h2>
@@ -67,45 +65,39 @@ export default function Form() {
 
                             <Grid container direction="column" spacing={2}>
                                 <Grid item>
-                                    <FormHelperText>Device ID</FormHelperText>
+                                    <FormHelperText><h3>Device ID</h3></FormHelperText>
                                     <TextField
                                         fullWidth
                                         placeholder='Enter device id '
                                         variant='outlined'
                                         name={'deviceid'}
-                                        {...register("deviceid", { required: "Id is required." })}
-                                        error={Boolean(errors.dvar)}
-                                        helperText={errors.dvar?.message}
+                                       
                                     >
 
                                     </TextField>
                                 </Grid>
                                 <Grid item>
-                                    <FormHelperText>Device Name</FormHelperText>
+                                    <FormHelperText><h3>Device Name</h3></FormHelperText>
                                     <TextField
                                         type="text"
                                         fullWidth
                                         placeholder="Enter unit"
                                         variant='outlined'
                                         name={'devicename'}
-                                        {...register("devicename", { required: "name is required." })}
-                                        error={Boolean(errors.var)}
-                                        helperText={errors.var?.message}
+                                        
                                     >
 
                                     </TextField>
                                 </Grid>
                                 <Grid item>
-                                    <FormHelperText>Description</FormHelperText>
+                                    <FormHelperText><h3>Description</h3></FormHelperText>
                                     <TextField
                                         type="text"
                                         fullWidth
                                         placeholder='Description'
                                         variant='outlined'
                                         name={'description'}
-                                        {...register("description", { required: "desc is required." })}
-                                        error={Boolean(errors.desc)}
-                                        helperText={errors.desc?.message}
+                                      
 
                                     >
 
