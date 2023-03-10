@@ -32,10 +32,10 @@ export default function Devices() {
       <Stack direction="row" sx={{ flexWrap: "wrap" }}>
         {devices.map((device) => (
           <OutlinedCard
-          key={device.deviceId}
-            deviceid={device.deviceId}
-            devicename={device.deviceName}
-            variableId={device.variableId}
+          key={device.DEVICEID}
+            deviceid={device.DEVICEID}
+            devicename={device.DEVICENAME}
+            variableId={device.VARIABLEID}
             />
             ))}
       </Stack>

@@ -24,21 +24,21 @@ const VariableCard = ({ name, value }) => {
 
           <>
             <CardContent>
-              
-                <Grid container justifyContent="flex-start" >
-                  <Typography variant="h4" color="#FFFFFF" sx={{ pd: 2 }}>
-                    {name}
-                  </Typography>
-
-                </Grid>
-             
-
               <Grid container justifyContent="flex-start">
                   <Typography variant="h3" color="#FFFFFF" align="left">
                     {value}
                   </Typography>
                 
               </Grid>
+              
+                <Grid container justifyContent="flex-start" >
+                  <Typography variant="h6" color="#FFFFFF" sx={{ pd: 2 }}>
+                    {name}
+                  </Typography>
+
+                </Grid>
+             
+
             </CardContent>
           </>
         </Card>

@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { db, dbId, variablesCollectionId } from "../service/appwrite-config";
-import { devicesCollectionId } from "../service/appwrite-config";
 
 import { useParams } from "react-router-dom";
 import { useQuery } from "react-query";
@@ -37,16 +36,16 @@ const Variable = (deviceId) => {
   return (
     
     <>
-      <h1 style={{ fontSize: 40, color: "#000" }}>DEVICE:{variables.deviceId}</h1>
+      <h1 style={{ fontSize: 40, color: "#000" }}>DEVICE:{variables.DEVICEID}</h1>
       <Stack direction={"row"} sx={{ flexWrap: "wrap" }}>
         {/* variables.map((variable) => {
           return
             <VariableCard />
           );
         }) */}
-        <VariableCard name={"Dpm"} value={variables.dpm} />
-        <VariableCard name={"Capacity"} value={variables.capacity} />
-        <VariableCard name={"Battery"} value={variables.battery} />
+        <VariableCard name={"Dpm"} value={variables.DPM} />
+        <VariableCard name={"Capacity"} value={variables.CAPACITY} />
+        <VariableCard name={"Battery"} value={variables.BATTERY} />
       </Stack>
       
     </>

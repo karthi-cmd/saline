@@ -42,7 +42,7 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
       <Grid sx={{ p: "2%" }}>
        <Card
           sx={{
-            width: 225,
+            width: 250,
             height: "100%",
             backgroundImage: "linear-gradient(to right,#8E2DE2,#4A00E0)",
             borderRadius: "10px",
@@ -57,11 +57,11 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
     </Link> */}
 
           <>
-            <CardContent>
+            <CardContent >
             <Link to={"/variable/" + variableId} style={{ textDecoration: "none" }}>
               
                     <Grid container justifyContent="flex-start">
-                    <Typography variant="h4" color="#FFFFFF" sx={{ pd: 2}} >
+                    <Typography variant="h3" color="#FFFFFF" >
                       {deviceid}
                     </Typography>
     <Avatar style={icon}sx={{width: 50, height: 50,left:'100px' }}  variant="square" > <MedicalServicesOutlinedIcon sx={{ fontSize: 40,right:'10' }}/></Avatar>
@@ -71,7 +71,7 @@ export default function OutlinedCard({ deviceid, devicename, variableId }) {
 
               <Grid container justifyContent="flex-start">
                 
-                  <Typography variant="h5" color="#FFFFFF" align="left">
+                  <Typography variant="h6" color="#FFFFFF" align="left">
                     {devicename}
                   </Typography>
                 

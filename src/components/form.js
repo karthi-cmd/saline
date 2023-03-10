@@ -21,9 +21,9 @@ export default function Form() {
 
         const form = deviceForm.current
         const promise = db.createDocument(dbId, devicesCollectionId, uuid(), {
-            deviceId: form['deviceid'].value,
-            deviceName: form['devicename'].value,
-            description: form['description'].value,
+            DEVICEID: form['deviceid'].value,
+            DEVICENAME: form['devicename'].value,
+            DESCRIPTION: form['description'].value,
         });
 
         promise.then(
