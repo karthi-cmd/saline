@@ -7,3 +7,13 @@
 ## Login
 Email: test@mail.com
 Password: 12345678
+
+##Details
+This is a software prototyping of Drips management software 
+Tech stack: React js (front-end)
+            Appwrite (Back-end)
+
+Note: All the confidential details you find in this repo are not used in production. All the login credentials, endpoints etc.. are no longer being used.
+
+We also made a mobile version of this prototype, which you can find in this repo.
+
