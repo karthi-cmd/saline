@@ -15,5 +15,5 @@ Tech stack: React js (front-end)
 
 Note: All the confidential details you find in this repo are not used in production. All the login credentials, endpoints etc.. are no longer being used.
 
-We also made a mobile version of this prototype, which you can find in this repo.
+We also made a mobile version of this prototype, which you can find in this repo @ https://github.com/karthi-cmd/saline/blob/react/saline-mobile-version.apk. Currently, the mobile version runs only on android os.
 
